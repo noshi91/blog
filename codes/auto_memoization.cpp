@@ -25,7 +25,7 @@ template <class F> class memoized_impl {
 
   template <std::size_t... I>
   R apply(const ArgsTuple &args_tuple, std::index_sequence<I...>) {
-    return static_cast<const F &>(func)(*this, std::get<I>(args_tuple)...);
+    return func(*this, std::get<I>(args_tuple)...);
   }
 
 public:
