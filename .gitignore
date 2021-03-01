@@ -1,0 +1,6 @@
+*
+!/.gitignore
+!/codes
+!/codes/*
+!/pages
+!/pages/*
