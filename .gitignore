@@ -1,6 +1,6 @@
 *
 !/.gitignore
 !/codes
-!/codes/*
+!/codes/**
 !/pages
-!/pages/*
+!/pages/**
