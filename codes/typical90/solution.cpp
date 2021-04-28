@@ -194,10 +194,9 @@ struct isets {
   static isets rake(isets child, isets base) {
     for (int i = 0; i != 2; i += 1) {
       child.count[i][1].shift();
+      child.count[i][1] += std::move(child.count[i][0]);
       for (int j = 0; j != 2; j += 1) {
-        for (int k = 0; k != 2; k += 1) {
-          base.count[i][j] += child.count[i][k];
-        }
+        base.count[i][j] = std::move(base.count[i][j]) * child.count[i][1];
       }
     }
     return base;
@@ -236,7 +235,7 @@ int main() {
   }
 
   if (N == 1) {
-    std::cout << "0 1\n";
+    std::cout << "1 1\n";
   } else {
     isets res = global_biased_merge(N, std::move(edges));
     std::vector<modint> ans = res.result().c;
